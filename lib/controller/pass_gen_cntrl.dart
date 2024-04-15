@@ -15,10 +15,9 @@ class PassController extends GetxController {
   final generatedPassword = ''.obs;
 
   void generatePassword() {
-    int length = int.tryParse(lengthController.text) ?? 12;
-    if (length < 6 || length > 20) {
-      showErrorDialog(
-          'Password contains at least 6 characters and at most 20 characters.');
+    int? length = int.tryParse(lengthController.text);
+    if (length == null || length < 6 || length > 20) {
+      showErrorDialog('Enter password length between 6 to 20');
       return;
     }
 
